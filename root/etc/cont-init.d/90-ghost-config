@@ -19,5 +19,4 @@ EOF
 # permissions
 chown -R abc:abc \
 	/config \
-	/data/completed/tv \
-	/tv
+	/data/completed/tv
