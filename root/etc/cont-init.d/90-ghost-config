@@ -16,7 +16,20 @@ cat <<"EOF"
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 EOF
 
-# permissions
-chown -R abc:abc \
-	/config \
-	/data/completed/tv
+# only chown the /config directory if it is not owned by abc:abc
+CHOWN_DIR=/config
+DIR_OWNER=`stat -c "%U:%G" $CHOWN_DIR`
+if [[ $DIR_OWNER != "abc:abc" ]]
+then
+    echo "chowning $CHOWN_DIR please be patient"
+    chown -R abc:abc $CHOWN_DIR
+fi
+
+# only chown the /data/completed/tv directory if it is not owned by abc:abc
+CHOWN_DIR=/data/completed/tv
+DIR_OWNER=`stat -c "%U:%G" $CHOWN_DIR`
+if [[ $DIR_OWNER != "abc:abc" ]]
+then
+    echo "chowning $CHOWN_DIR please be patient"
+    chown -R abc:abc $CHOWN_DIR
+fi
