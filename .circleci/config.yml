@@ -4,7 +4,7 @@ executors:
     environment:
       IMAGE_NAME: ghostserverd/sonarr
     docker:
-      - image: circleci/buildpack-deps:stretch
+      - image: cimg/base
 jobs:
   build:
     executor: docker-publisher
